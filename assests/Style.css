@@ -44,14 +44,14 @@ header ul li a{
     color: #ff3737;
 }
 
-section{
+section > div{
     display: grid;
     grid-template-columns: 35% 65%;
     font-size: 18px;
     padding: 1vw;
 }
 
-#CustomerManage > div{
+section > div > div{
     margin-top: 12vh;
 }
 
@@ -119,6 +119,10 @@ th , td{
 th{
     background-color: #DB3843;
     color: white;
+}
+
+section{
+    display: none;
 }
 
 

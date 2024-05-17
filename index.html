@@ -14,69 +14,73 @@
 
         <ul>
             <li><a href="">Home</a></li>
-            <li><a href="">Customer</a></li>
-            <li><a href="">Item</a></li>
+            <li><a href="#CustomerManage" class="nav-link">Customer</a></li>
+            <li><a href="#ItemManage" class="nav-link">Item</a></li>
             <li><a href="">Orders</a></li>
         </ul>
     </header>
 
     <section id="CustomerManage">
         <div>
-            <h1 class="title">Customer Registration</h1>
 
-            <form action="">
-                <div>
-                    <label for="">Customer Id</label>
-                    <input type="text">
-                </div>
-                <div>
-                    <label for="">Customer Name</label>
-                    <input type="text">
-                </div>
-                <div>
-                    <label for="">Customer Address</label>
-                    <input type="text">
-                </div>
-                <div>
-                    <label for="">Customer Salary</label>
-                    <input type="number">
-                </div>
+            <div>
+                <h1 class="title">Customer Registration</h1>
+    
+                <form action="">
+                    <div>
+                        <label for="">Customer Id</label>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <label for="">Customer Name</label>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <label for="">Customer Address</label>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <label for="">Customer Salary</label>
+                        <input type="number">
+                    </div>
+    
+                    <div class="buttons">
+                        <button>Save Customer</button>
+                        <button>Remove</button>
+                        <button>Update</button>
+                        <button>GetAll</button>
+                        <button>Clear All</button>
+                    </div>
+                </form>
+            </div>
+    
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer Id</th>
+                            <th>Customer Name</th>
+                            <th>Customer Address</th>
+                            <th>Customer Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CD-001</td>
+                            <td>Sadun Malaka</td>
+                            <td>No17, Panadura</td>
+                            <td>100.00</td>
+                        </tr>
+                        <tr>
+                            <td>CD-003</td>
+                            <td>Ramal Wasuka</td>
+                            <td>Panadura</td>
+                            <td>200.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="buttons">
-                    <button>Save Customer</button>
-                    <button>Remove</button>
-                    <button>Update</button>
-                    <button>GetAll</button>
-                    <button>Clear All</button>
-                </div>
-            </form>
-        </div>
-
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Customer Id</th>
-                        <th>Customer Name</th>
-                        <th>Customer Address</th>
-                        <th>Customer Salary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>CD-001</td>
-                        <td>Sadun Malaka</td>
-                        <td>No17, Panadura</td>
-                        <td>100.00</td>
-                    </tr>
-                    <tr>
-                        <td>CD-003</td>
-                        <td>Ramal Wasuka</td>
-                        <td>Panadura</td>
-                        <td>200.00</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </section>
 
@@ -84,61 +88,84 @@
 
     <section id="ItemManage">
         <div>
-            <h1 class="title">Item Registration</h1>
 
-            <form action="" class="inputData">
-                <div>
-                    <label for="">Item Code</label>
-                    <input type="text">
-                </div>
-                <div>
-                    <label for="">Item Name</label>
-                    <input type="text">
-                </div>
-                <div>
-                    <label for="">Item Qty</label>
-                    <input type="number">
-                </div>
-                <div>
-                    <label for="">Item Price</label>
-                    <input type="number">
-                </div>
+            <div>
+                <h1 class="title">Item Registration</h1>
+    
+                <form action="" class="inputData">
+                    <div>
+                        <label for="">Item Code</label>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <label for="">Item Name</label>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <label for="">Item Qty</label>
+                        <input type="number">
+                    </div>
+                    <div>
+                        <label for="">Item Price</label>
+                        <input type="number">
+                    </div>
+    
+                    <div class="buttons">
+                        <button>Save Item</button>
+                        <button>Remove</button>
+                        <button>Update</button>
+                        <button>GetAll</button>
+                        <button>Clear All</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item Code</th>
+                            <th>Item Name</th>
+                            <th>Item Qty</th>
+                            <th>Item Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>IT-001</td>
+                            <td>Soap</td>
+                            <td>100</td>
+                            <td>50.00</td>
+                        </tr>
+                        <tr>
+                            <td>IT-002</td>
+                            <td>Shampoo</td>
+                            <td>200</td>
+                            <td>100.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="buttons">
-                    <button>Save Item</button>
-                    <button>Remove</button>
-                    <button>Update</button>
-                    <button>GetAll</button>
-                    <button>Clear All</button>
-                </div>
-            </form>
-        </div>
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item Code</th>
-                        <th>Item Name</th>
-                        <th>Item Qty</th>
-                        <th>Item Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>IT-001</td>
-                        <td>Soap</td>
-                        <td>100</td>
-                        <td>50.00</td>
-                    </tr>
-                    <tr>
-                        <td>IT-002</td>
-                        <td>Shampoo</td>
-                        <td>200</td>
-                        <td>100.00</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </section>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+        $('#CustomerManage').show();
+
+        $('.nav-link').click(function(event){
+            event.preventDefault();
+
+            $('section').hide();
+
+            var targetSection = $(this).attr('href');
+
+            $(targetSection).show();
+        });
+    });
+
+</script>
 </html>
