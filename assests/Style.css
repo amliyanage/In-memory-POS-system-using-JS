@@ -51,7 +51,7 @@ section > div{
     padding: 1vw;
 }
 
-section > div > div{
+section > :first-child > div{
     margin-top: 12vh;
 }
 
@@ -141,7 +141,7 @@ section{
     justify-content: space-around;
 }
 
-#OrderManage > div > div{
+#OrderManage > :first-child > div{
     margin-top: 12vh;
 }
 
@@ -233,3 +233,55 @@ section{
     color: white;
     margin-top: 50px;
 }
+
+
+/* #OrderManage th , #OrderManage td{
+    width: 18vw;
+    height: 4vw;
+    text-align: center;
+    margin: 0;
+}
+
+#OrderManage th{
+    background-color: #04affe;
+    color: white;
+}
+
+#OrderManage tbody{
+    width: 1vh;
+    overflow-y: scroll;
+} */
+
+.tableRow{
+    height: 1vh;
+}
+
+.table > div , .tableRows > div{
+    display: flex;
+}
+
+.table , .tableRows{
+    display: flex;
+    flex-direction: column;
+    padding: 0 5.7vw;
+}
+
+.table > div > div , .tableRows > div > div{
+    width: 18vw;
+    height: 4vw;
+    border: 1px solid #c4c4c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tableRows > div > div{
+    width: 20vw;
+}
+
+#OrderManage > :last-child{
+    display: flex;
+    flex-direction: column;
+    height: 33vh;
+    overflow-y: scroll;
+}
+
