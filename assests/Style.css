@@ -44,74 +44,75 @@ header ul li a{
     color: #ff3737;
 }
 
-#CustomerManage{
+section{
     display: grid;
     grid-template-columns: 35% 65%;
     font-size: 18px;
     padding: 1vw;
 }
 
-#CustomerManage div{
+#CustomerManage > div{
     margin-top: 12vh;
 }
 
-#CustomerManage h1{
+.title{
     font-size: 2rem;
     font-weight: 500;
 }
 
-#CustomerManage form div{
+form div{
     display: flex;
     flex-direction: column;
     gap: 5px;
     margin-top: 30px;
 }
 
-#CustomerManage form div input{
+form div input{
     padding: 10px;
     border: 1px solid #c4c4c4;
     border-radius: 5px;
 }
 
-#CustomerManage .buttons{
+.buttons{
     flex-direction: row;
     font-size: 18px;
     gap: 0;
 }
 
-#CustomerManage .buttons button{
+.buttons button{
     padding: 20px 30px;
     border: 1px solid #c4c4c4;
     cursor: pointer;
 }
 
-#CustomerManage .buttons > :first-child{
+.buttons > :first-child{
     background-color: #56ABF6;
 }
 
-#CustomerManage .buttons > :nth-child(2){
+.buttons > :nth-child(2){
     background-color: #DB3843;
 }
 
-#CustomerManage .buttons > :nth-child(3){
+.buttons > :nth-child(3){
     background-color: #FEBF04;
 }
 
-#CustomerManage .buttons > :nth-child(4){
+.buttons > :nth-child(4){
     background-color: #24A746;
 }
 
-#CustomerManage .buttons > :last-child{
+.buttons > :last-child{
     background-color: #D43A40;
 }
 
-#CustomerManage table{
+table{
     margin-left: 50px;
 }
 
 th , td{
     border: 1px solid #c4c4c4;
-    padding: 20px 70px;
+    width: 20vw;
+    height: 4vw;
     text-align: center;
 }
 
@@ -119,4 +120,5 @@ th{
     background-color: #DB3843;
     color: white;
 }
+
 
