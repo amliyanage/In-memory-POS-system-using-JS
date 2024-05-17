@@ -148,13 +148,121 @@
 
         </div>
     </section>
+
+    <!-- --------------------------------------------end of item manage-------------------------------------------- -->
+
+    <section id="OrderManage">
+        <div>
+            <div class="includeDetails">
+                <h1>Include Details</h1>
+                <div>
+                    <form action="">
+                        <div>
+                            <div>
+                                <label for="">Order Id</label>
+                                <input type="text">
+                            </div>
+                            <div>
+                                <label for="">Order Date</label>
+                                <input type="date">
+                            </div>
+                            <div>
+                                <label for="">Customer</label>
+                                <select name="" id=""></select>
+                            </div>
+                            <div>
+                                <label for="">Customer ID</label>
+                                <input type="text">
+                            </div>
+                            <div>
+                                <label for="">Customer Name</label>
+                                <input type="text">
+                            </div>
+                            <div>
+                                <label for="">Customer Salary</label>
+                                <input type="number">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Salary</label>
+                            <input type="number">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="ItemSelect">
+                <h1>Item Select</h1>
+                <form action="">
+                    <div>
+                        <div>
+                            <label for="">Item</label>
+                            <select name="" id=""></select>
+                        </div>
+                        <div>
+                            <label for="">Item Code</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="">Item Name</label>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <label for="">Item Price</label>
+                            <input type="number">
+                        </div>
+                        <div>
+                            <label for="">Item Qty</label>
+                            <input type="number">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">Order Qty</label>
+                        <input type="number">
+                    </div>
+                </form>
+
+                <div>
+                    <button>Add Item</button>
+                </div>
+            </div>
+
+            <div class="TotalCal">
+                <h1>Total : <span>00.0Rs/=</span></h1>
+                <h2>Sub Total : <span>00.0Rs/=</span></h2>
+
+                <form action="">
+                    <div>
+                        <div>
+                            <label for="">Cash</label>
+                            <input type="number">
+                        </div>
+                        <div>
+                            <label for="">Discount</label>
+                            <input type="number">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">Balance</label>
+                        <input type="number">
+                    </div>
+                </form>
+
+                <div>
+                    <button>Purchase</button>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 
     $(document).ready(function(){
-        $('#CustomerManage').show();
+        $('#OrderManage').show();
 
         $('.nav-link').click(function(event){
             event.preventDefault();

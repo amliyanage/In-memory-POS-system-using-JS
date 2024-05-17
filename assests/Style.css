@@ -66,8 +66,14 @@ form div{
     gap: 5px;
     margin-top: 30px;
 }
+/* 
+#CustomerManage form div input , #CustomerManage select , #ItemManage form div input , #ItemManage select{
+    padding: 10px;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+} */
 
-form div input{
+form div input ,select{
     padding: 10px;
     border: 1px solid #c4c4c4;
     border-radius: 5px;
@@ -75,7 +81,7 @@ form div input{
 
 .buttons{
     flex-direction: row;
-    font-size: 18px;
+    font-size: 18px !important;
     gap: 0;
 }
 
@@ -105,18 +111,18 @@ form div input{
     background-color: #D43A40;
 }
 
-table{
+#CustomerManage table , #ItemManage table{
     margin-left: 50px;
 }
 
-th , td{
+#CustomerManage th , #CustomerManage td , #ItemManage th , #ItemManage td{
     border: 1px solid #c4c4c4;
     width: 20vw;
     height: 4vw;
     text-align: center;
 }
 
-th{
+#CustomerManage th , #ItemManage th{
     background-color: #DB3843;
     color: white;
 }
@@ -125,4 +131,105 @@ section{
     display: none;
 }
 
+.includeDetails{
+    border: 1px solid #000000;
+    padding: 20px;
+}
 
+#OrderManage > div {
+    display: flex;
+    justify-content: space-around;
+}
+
+#OrderManage > div > div{
+    margin-top: 12vh;
+}
+
+#OrderManage h1{
+    font-size: 1.5rem;
+    font-weight: 500;
+    background-color: #24A746;
+    padding: 10px 20px;
+}
+
+#OrderManage .includeDetails form div > div ,#OrderManage .includeDetails form > :last-child{
+    margin-top: 0;
+    margin: 10px 15px;
+}
+
+#OrderManage .includeDetails form > :first-child{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#OrderManage .ItemSelect form > :first-child{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#OrderManage .ItemSelect form div > div , #OrderManage .ItemSelect form > :last-child{
+    margin-top: 0;
+    margin: 10px 15px;
+}
+
+#OrderManage .ItemSelect form > :nth-child(2){
+    display: grid;
+    grid-template-columns: 40% 39% 20%;
+    margin: 0;
+}
+
+.ItemSelect > :last-child{
+    display: flex;
+    justify-content: end;
+}
+
+.ItemSelect button{
+    padding: 10px 20px;
+    border: 1px solid #c4c4c4;
+    cursor: pointer;
+    background-color: #D43A40;
+    color: white;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+
+.ItemSelect{
+    border: 1px solid #000000;
+    padding: 20px;
+}
+
+#OrderManage .TotalCal h1 , .TotalCal h2{
+    background-color: transparent;
+    padding: 0;
+    font-size: 30px;
+    color: #39dbf8;
+    font-weight: 400;
+}
+
+.TotalCal {
+    border: 1px solid #000000;
+    padding: 20px;
+}
+
+.TotalCal h2{
+    color: #D43A40;
+}
+
+.TotalCal form > :first-child{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.TotalCal > :last-child{
+    display: flex;
+    justify-content: center;
+}
+
+.TotalCal button{
+    padding: 20px 30px;
+    border: 1px solid #c4c4c4;
+    cursor: pointer;
+    background-color: #24A746;
+    color: white;
+    margin-top: 50px;
+}
