@@ -131,3 +131,7 @@ function refresh(){
     $('#CustomerManage .invalidCustAddress').text('');
 }
 
+$('#CustomerManage .cleatBtn').click(function(){
+    refresh();
+});
+
