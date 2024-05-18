@@ -16,7 +16,7 @@
             <li><a href="">Home</a></li>
             <li><a href="#CustomerManage" class="nav-link">Customer</a></li>
             <li><a href="#ItemManage" class="nav-link">Item</a></li>
-            <li><a href="">Orders</a></li>
+            <li><a href="#OrderManage" class="nav-link">Orders</a></li>
         </ul>
     </header>
 
@@ -26,27 +26,30 @@
             <div>
                 <h1 class="title">Customer Registration</h1>
     
-                <form action="">
+                <form id="customerForm">
                     <div>
                         <label for="">Customer Id</label>
-                        <input type="text">
+                        <input type="text" class="custId">
+                        <h5 class="invalidCustId"></h5>
                     </div>
                     <div>
                         <label for="">Customer Name</label>
-                        <input type="text">
+                        <input type="text" class="custName">
+                        <h5 class="invalidCustName">aa</h5>
                     </div>
                     <div>
                         <label for="">Customer Address</label>
-                        <input type="text">
+                        <input type="text"  class="custAddress" >
+                        <h5 class="invalidCustAddress"></h5>
                     </div>
                     <div>
                         <label for="">Customer Salary</label>
-                        <input type="number">
+                        <input type="number" class="custSalary">
                     </div>
     
                     <div class="buttons">
-                        <button>Save Customer</button>
-                        <button>Remove</button>
+                        <button type="submit" class="saveBtn">Save Customer</button>
+                        <button class="removeCust">Remove</button>
                         <button>Update</button>
                         <button>GetAll</button>
                         <button>Clear All</button>
@@ -64,7 +67,7 @@
                             <th>Customer Salary</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="tableRow">
                         <tr>
                             <td>CD-001</td>
                             <td>Sadun Malaka</td>
@@ -301,10 +304,11 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="module" src="Controller/CustomerController.js"></script>
 <script>
 
     $(document).ready(function(){
-        $('#OrderManage').show();
+        $('#CustomerManage').show();
 
         $('.nav-link').click(function(event){
             event.preventDefault();

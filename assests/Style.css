@@ -64,7 +64,7 @@ form div{
     display: flex;
     flex-direction: column;
     gap: 5px;
-    margin-top: 30px;
+    margin-top: 34px;
 }
 /* 
 #CustomerManage form div input , #CustomerManage select , #ItemManage form div input , #ItemManage select{
@@ -283,5 +283,13 @@ section{
     flex-direction: column;
     height: 33vh;
     overflow-y: scroll;
+}
+
+h5{
+    font-size: 15px;
+    color: #ff4343;
+    font-weight: 400;
+    position: absolute;
+    margin-top: 7.8vh;
 }
 
