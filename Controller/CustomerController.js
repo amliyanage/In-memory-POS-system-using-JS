@@ -1,5 +1,6 @@
 import { saveCustomer } from '../model/CustomerModel.js';
 import { getAllCustomers } from '../model/CustomerModel.js';
+import { updateCustomer } from '../model/CustomerModel.js';
 
 $(document).ready(function(){
     refresh();
@@ -129,6 +130,8 @@ function refresh(){
     $('#CustomerManage .invalidCustId').text('');
     $('#CustomerManage .invalidCustName').text('');
     $('#CustomerManage .invalidCustAddress').text('');
+
+    reloadTable();
 }
 
 $('#CustomerManage .cleatBtn').click(function(){
@@ -151,5 +154,31 @@ function searchCustomer(id){
     let customers = getAllCustomers();
     let customer = customers.find(c => c.custId === id);
     return customer;
+}
+
+$('#CustomerManage .updateBtn').click(function(){
+    
+    let UpdateCustomer = {
+        custId : $('#CustomerManage .custId').val(),
+        custName : $('#CustomerManage .custName').val(),
+        custAddress : $('#CustomerManage .custAddress').val(),
+        custSalary : $('#CustomerManage .custSalary').val()
+    }
+
+    let validResult = validate(UpdateCustomer);
+    
+    if(validResult){
+        updateCustomer(UpdateCustomer);
+        refresh();
+    }
+
+});
+
+function reloadTable(){
+    let customers = getAllCustomers();
+    $('#CustomerManage .tableRow').empty();
+    customers.forEach(c => {
+        loadTable(c);
+    });
 }
 
