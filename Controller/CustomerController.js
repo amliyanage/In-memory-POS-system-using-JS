@@ -1,4 +1,9 @@
 import { saveCustomer } from '../model/CustomerModel.js';
+import { getAllCustomers } from '../model/CustomerModel.js';
+
+$(document).ready(function(){
+    refresh();
+});
 
 document.querySelector('#CustomerManage #customerForm').addEventListener('submit', function(event){
     event.preventDefault();
@@ -25,11 +30,13 @@ $('#CustomerManage .saveBtn').click(function(){
 
     let validResult = validate(customer);
 
-    alert(validResult);
+    if(validResult){
+        saveCustomer(customer);
+        loadTable(customer);
+        refresh();
+    }
 
-    saveCustomer(customer);
 });
-
 
 
 function validate(customer){
@@ -72,5 +79,55 @@ function validate(customer){
     }
 
     return valid;
+}
+
+function loadTable(customer){
+    $('#CustomerManage .tableRow').append(
+        '<tr> ' +
+            '<td>' + customer.custId + '</td>' +
+            '<td>' + customer.custName + '</td>' +
+            '<td>' + customer.custAddress + '</td>' +
+            '<td>' + customer.custSalary + '</td>' +
+        '</tr>' 
+    );
+}
+
+// function table(cus){
+//     $('#CustomerManage .tableRow tr').each(function() {
+        
+//     });
+// }
+
+function extractNumber(id) {
+    var match = id.match(/C0(\d+)/);
+    if (match && match.length > 1) {
+        return parseInt(match[1]);
+    }
+    return null;
+}
+
+function createCustomerId() {
+    let customers = getAllCustomers();
+    
+    if (!customers || customers.length === 0) {
+        return 'C01';
+    } else {
+        let lastCustomer = customers[customers.length - 1];
+        let id = lastCustomer && lastCustomer.custId ? lastCustomer.custId : 'C00';
+        
+        let number = extractNumber(id);
+        number++;
+        return 'C0' + number;
+    }
+}
+
+function refresh(){
+    $('#CustomerManage .custId').val(createCustomerId());
+    $('#CustomerManage .custName').val('');
+    $('#CustomerManage .custAddress').val('');
+    $('#CustomerManage .custSalary').val('');
+    $('#CustomerManage .invalidCustId').text('');
+    $('#CustomerManage .invalidCustName').text('');
+    $('#CustomerManage .invalidCustAddress').text('');
 }
 
