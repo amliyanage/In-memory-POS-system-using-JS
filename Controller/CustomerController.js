@@ -1,6 +1,7 @@
 import { saveCustomer } from '../model/CustomerModel.js';
 import { getAllCustomers } from '../model/CustomerModel.js';
 import { updateCustomer } from '../model/CustomerModel.js';
+import { deleteCustomer } from '../model/CustomerModel.js';
 
 $(document).ready(function(){
     refresh();
@@ -93,12 +94,6 @@ function loadTable(customer){
     );
 }
 
-// function table(cus){
-//     $('#CustomerManage .tableRow tr').each(function() {
-        
-//     });
-// }
-
 function extractNumber(id) {
     var match = id.match(/C0(\d+)/);
     if (match && match.length > 1) {
@@ -168,7 +163,9 @@ $('#CustomerManage .updateBtn').click(function(){
     let validResult = validate(UpdateCustomer);
     
     if(validResult){
-        updateCustomer(UpdateCustomer);
+        let customers = getAllCustomers();
+        let index = customers.findIndex(c => c.custId === UpdateCustomer.custId);
+        updateCustomer(index, UpdateCustomer);
         refresh();
     }
 
@@ -181,4 +178,18 @@ function reloadTable(){
         loadTable(c);
     });
 }
+
+$('#CustomerManage .removeBtn').click(function(){
+    let customers = getAllCustomers();
+    let id = $('#CustomerManage .custId').val();
+
+    let index = customers.findIndex(c => c.custId === id);
+    if(index >= 0){
+        deleteCustomer(index);
+        refresh();
+    }
+    else{
+        alert('Customer Not Found');
+    }
+});
 
