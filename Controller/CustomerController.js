@@ -135,3 +135,21 @@ $('#CustomerManage .cleatBtn').click(function(){
     refresh();
 });
 
+$('#CustomerManage .searchBtn').click(function(){
+    let customer = searchCustomer($('#CustomerManage .custId').val());
+    if(customer){
+        $('#CustomerManage .custName').val(customer.custName);
+        $('#CustomerManage .custAddress').val(customer.custAddress);
+        $('#CustomerManage .custSalary').val(customer.custSalary);
+    }
+    else{
+        alert('Customer Not Found');
+    }
+});
+
+function searchCustomer(id){
+    let customers = getAllCustomers();
+    let customer = customers.find(c => c.custId === id);
+    return customer;
+}
+
