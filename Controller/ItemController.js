@@ -1,6 +1,7 @@
 import { saveItem } from '../model/ItemModel.js';
 import { getAllItems } from '../model/ItemModel.js';
 import { deleteItem } from '../model/ItemModel.js';
+import { updateItem } from '../model/ItemModel.js';
 
 document.querySelector('#ItemManage #ItemForm').addEventListener('submit', function(event){
     event.preventDefault();
@@ -169,5 +170,26 @@ $('#ItemManage .deleteBtn').click(function(){
     }
     else{
         $('#ItemManage .invalidCode').text('Item Id does not exist');
+    }
+});
+
+$('#ItemManage .updateBtn').click(function(){
+    alert('Update');
+    let item = {
+        itemId : 'I00',
+        itemName : $('#ItemManage .itemName').val(),
+        itemQty : $('#ItemManage .itemQty').val(),
+        itemPrice : $('#ItemManage .itemPrice').val()
+    }
+
+    let valid = validate(item);
+
+    item.itemId = $('#ItemManage .itemId').val();
+
+    if(valid){
+        let items = getAllItems();
+        let index = items.findIndex(i => i.itemId === item.itemId);
+        updateItem(index, item);
+        refresh();
     }
 });

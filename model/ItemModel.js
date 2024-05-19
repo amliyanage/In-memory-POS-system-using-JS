@@ -12,3 +12,7 @@ export function getAllItems() {
 export function deleteItem(index){
     Items.splice(index, 1);
 }
+
+export function updateItem(index, item){
+    Items[index] = item;
+}
