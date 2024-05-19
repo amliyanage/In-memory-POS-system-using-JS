@@ -193,3 +193,7 @@ $('#ItemManage .updateBtn').click(function(){
         refresh();
     }
 });
+
+$('#ItemManage .clearBtn').click(function(){
+    refresh();
+});
