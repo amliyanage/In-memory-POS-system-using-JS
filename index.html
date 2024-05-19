@@ -16,7 +16,7 @@
             <li><a href="">Home</a></li>
             <li><a href="#CustomerManage" class="nav-link">Customer</a></li>
             <li><a href="#ItemManage" class="nav-link">Item</a></li>
-            <li><a href="#OrderManage" class="nav-link">Orders</a></li>
+            <li><a href="#OrderManage" class="nav-link orderManageBtn">Orders</a></li>
         </ul>
     </header>
 
@@ -156,32 +156,32 @@
                         <div>
                             <div>
                                 <label for="">Order Id</label>
-                                <input type="text">
+                                <input type="text" class="orderId" disabled>
                             </div>
                             <div>
                                 <label for="">Order Date</label>
-                                <input type="date">
+                                <input type="date" class="orderDate">
                             </div>
                             <div>
                                 <label for="">Customer</label>
-                                <select name="" id=""></select>
+                                <select class="customers" name="" id=""></select>
                             </div>
                             <div>
                                 <label for="">Customer ID</label>
-                                <input type="text">
+                                <input type="text" class="custId">
                             </div>
                             <div>
                                 <label for="">Customer Name</label>
-                                <input type="text">
+                                <input type="text" class="custName">
                             </div>
                             <div>
                                 <label for="">Customer Salary</label>
-                                <input type="number">
+                                <input type="number" class="custSalary">
                             </div>
                         </div>
                         <div>
-                            <label for="">Salary</label>
-                            <input type="number">
+                            <label for="">Address</label>
+                            <input type="text" class="custAddress">
                         </div>
                     </form>
                 </div>
@@ -299,10 +299,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="module" src="Controller/CustomerController.js"></script>
 <script type="module" src="Controller/ItemController.js"></script>
+<script type="module" src="Controller/OrderController.js"></script>
 <script>
 
     $(document).ready(function(){
-        $('#ItemManage').show();
+        $('#OrderManage').show();
 
         $('.nav-link').click(function(event){
             event.preventDefault();

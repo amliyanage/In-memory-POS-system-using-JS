@@ -173,13 +173,15 @@ function searchCustomer(id){
 $('#CustomerManage .updateBtn').click(function(){
     
     let UpdateCustomer = {
-        custId : $('#CustomerManage .custId').val(),
+        custId : 'C00',
         custName : $('#CustomerManage .custName').val(),
         custAddress : $('#CustomerManage .custAddress').val(),
         custSalary : $('#CustomerManage .custSalary').val()
     }
 
     let validResult = validate(UpdateCustomer);
+
+    UpdateCustomer.custId = $('#CustomerManage .custId').val();
     
     if(validResult){
         let customers = getAllCustomers();
