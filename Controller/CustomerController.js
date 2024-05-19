@@ -79,6 +79,26 @@ function validate(customer){
         valid = false;
     }
 
+    if(customer.custSalary != null && customer.custSalary > 0){
+        $('#CustomerManage .invalidCustSalary').text('');
+        if(valid){
+            valid = true;
+        }
+    }
+    
+    else{
+        $('#CustomerManage .invalidCustSalary').text('Invalid Customer Salary');
+        valid = false;
+    }
+
+    let customers = getAllCustomers();
+    for(let i = 0; i < customers.length; i++){
+        if(customers[i].custId === customer.custId){
+            $('#CustomerManage .invalidCustId').text('Customer Id Already Exists');
+            valid = false;
+        }
+    }
+
     return valid;
 }
 
@@ -190,5 +210,17 @@ $('#CustomerManage .removeBtn').click(function(){
     else{
         alert('Customer Not Found');
     }
+});
+
+$('#CustomerManage .tableRow').on('click', 'tr', function(){
+    let id = $(this).children('td:eq(0)').text();
+    let name = $(this).children('td:eq(1)').text();
+    let qty = $(this).children('td:eq(2)').text();
+    let price = $(this).children('td:eq(3)').text();
+
+    $('#CustomerManage .custId').val(id);
+    $('#CustomerManage .custName').val(name);
+    $('#CustomerManage .custAddress').val(qty);
+    $('#CustomerManage .custSalary').val(price);
 });
 
