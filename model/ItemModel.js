@@ -8,3 +8,7 @@ export function saveItem(item) {
 export function getAllItems() {
     return Items;
 }
+
+export function deleteItem(index){
+    Items.splice(index, 1);
+}

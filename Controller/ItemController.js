@@ -1,5 +1,6 @@
 import { saveItem } from '../model/ItemModel.js';
 import { getAllItems } from '../model/ItemModel.js';
+import { deleteItem } from '../model/ItemModel.js';
 
 document.querySelector('#ItemManage #ItemForm').addEventListener('submit', function(event){
     event.preventDefault();
@@ -58,6 +59,29 @@ function validate(item){
         
         else{
             $('#ItemManage .invalidName').text('Invalid Item Name');
+            valid = false;
+        }
+
+        if(item.itemQty != null || item.itemQty > 0){
+            $('#ItemManage .invalidQty').text('');
+            if(valid){
+                valid = true;
+            }
+        }
+        else{
+            $('#ItemManage .invalidQty').text('Invalid Item Quantity');
+            valid = false;
+        }
+
+        if(item.itemPrice != null || item.itemPrice > 0){
+            $('#ItemManage .invalidPrice').text('');
+            if(valid){
+                valid = true;
+            }
+        }
+
+        else{
+            $('#ItemManage .invalidPrice').text('Invalid Item Price');
             valid = false;
         }
 
@@ -122,3 +146,15 @@ function loadTable(){
         );
     }
 }
+
+$('#ItemManage .tableRow').on('click', 'tr', function(){
+    let id = $(this).children('td:eq(0)').text();
+    let name = $(this).children('td:eq(1)').text();
+    let qty = $(this).children('td:eq(2)').text();
+    let price = $(this).children('td:eq(3)').text();
+
+    $('#ItemManage .itemId').val(id);
+    $('#ItemManage .itemName').val(name);
+    $('#ItemManage .itemQty').val(qty);
+    $('#ItemManage .itemPrice').val(price);
+});
