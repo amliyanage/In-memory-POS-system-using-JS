@@ -1,5 +1,6 @@
 import { getAllOrders } from "../model/OrderModel.js";
 import { getAllCustomers } from "../model/CustomerModel.js";
+import { getAllItems } from "../model/ItemModel.js";
 
 $(document).ready(function () {
     refresh();
@@ -13,6 +14,7 @@ function refresh(){
     $('#OrderManage .orderId').val(generateId());
     $('#OrderManage .orderDate').val(new Date().toISOString().split('T')[0]);
     loadCustomer();
+    loadItems();
 }
 
 function extractNumber(id){
@@ -60,4 +62,29 @@ $('#OrderManage .customers').change(function(){
     $('#OrderManage .custSalary').val(customer.custSalary);
 });
 
+function loadItems(){
+    let cmb = $('#OrderManage .itemCmb');
+    cmb.empty();
+    let option = [];
+    let items = getAllItems();
 
+    for (let i = 0; i < items.length; i++) {
+        option.push(items[i].itemId);
+    }
+
+    $.each(option, function (index, value) {
+        cmb.append($('<option>').val(value).text(value));
+    });
+}
+
+$('#OrderManage .itemCmb').change(function(){
+    let item = getAllItems().find(i => i.itemId === $(this).val());
+    $('#OrderManage .itemCode').val(item.itemId);
+    $('#OrderManage .itemName').val(item.itemName);
+    $('#OrderManage .itemQty').val(item.itemQty);
+    $('#OrderManage .itemPrice').val(item.itemPrice);
+});
+
+
+
+// $('#orderManage .itemCmb')
