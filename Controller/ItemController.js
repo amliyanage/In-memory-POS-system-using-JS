@@ -89,6 +89,7 @@ function refresh(){
     $('#ItemManage .itemName').val('');
     $('#ItemManage .itemQty').val('');
     $('#ItemManage .itemPrice').val('');
+    loadTable();
 }
 
 function generateId(){
@@ -104,5 +105,20 @@ function generateId(){
         console.log(number);
         number++;
         return 'I0' + number;
+    }
+}
+
+function loadTable(){
+    let items = getAllItems();
+    $('#ItemManage .tableRow').empty();
+    for(let i = 0; i < items.length; i++){
+        $('#ItemManage .tableRow').append(
+            '<tr> ' +
+                '<td>' + items[i].itemId + '</td>' +
+                '<td>' + items[i].itemName + '</td>' +
+                '<td>' + items[i].itemQty + '</td>' +
+                '<td>' + items[i].itemPrice + '</td>' +
+            '</tr>' 
+        );
     }
 }
