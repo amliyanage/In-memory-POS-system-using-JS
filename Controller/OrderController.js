@@ -85,6 +85,35 @@ $('#OrderManage .itemCmb').change(function(){
     $('#OrderManage .itemPrice').val(item.itemPrice);
 });
 
+let getItems = [];
 
+$('#OrderManage .addBtn').click(function(){
+    let getItem = {
+        itemCode : $('#OrderManage .itemCode').val(),
+        getItems : $('#OrderManage .itemName').val(),
+        itemPrice : $('#OrderManage .itemPrice').val(),
+        itemQty : $('#OrderManage .orderQty').val(),
+        total : $('#OrderManage .itemPrice').val() * $('#OrderManage .orderQty').val()
+    }
+
+    getItems.push(getItem);
+    loadTable();
+});
+
+
+function loadTable(){
+    $('#OrderManage .tableRow').empty();
+    for(let i = 0; i < getItems.length; i++){
+        $('#OrderManage .tableRows').append(
+            '<div> ' +
+                '<div>' + getItems[i].itemCode + '</div>' +
+                '<div>' + getItems[i].getItems + '</div>' +
+                '<div>' + getItems[i].itemPrice + '</div>' +
+                '<div>' + getItems[i].itemQty + '</div>' +
+                '<div>' + getItems[i].total + '</div>' +
+            '</tr>' 
+        );
+    }
+}
 
 // $('#orderManage .itemCmb')
