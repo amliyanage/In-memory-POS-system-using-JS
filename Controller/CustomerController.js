@@ -34,7 +34,6 @@ $('#CustomerManage .saveBtn').click(function(){
 
     if(validResult){
         saveCustomer(customer);
-        loadTable(customer);
         refresh();
     }
 
