@@ -197,3 +197,17 @@ $('#ItemManage .updateBtn').click(function(){
 $('#ItemManage .clearBtn').click(function(){
     refresh();
 });
+
+$('#ItemManage .searchBtn').click(function(){
+    let id = $('#ItemManage .itemId').val();
+    let items = getAllItems();
+    let item = items.find(item => item.itemId === id);
+    if(item){
+        $('#ItemManage .itemName').val(item.itemName);
+        $('#ItemManage .itemQty').val(item.itemQty);
+        $('#ItemManage .itemPrice').val(item.itemPrice);
+    }
+    else{
+        $('#ItemManage .invalidCode').text('Item Id does not exist');
+    }
+});
