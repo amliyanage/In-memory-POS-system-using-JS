@@ -62,7 +62,7 @@ function validate(item){
             valid = false;
         }
 
-        if(item.itemQty != null || item.itemQty > 0){
+        if(item.itemQty != null && item.itemQty > 0){
             $('#ItemManage .invalidQty').text('');
             if(valid){
                 valid = true;
@@ -73,7 +73,7 @@ function validate(item){
             valid = false;
         }
 
-        if(item.itemPrice != null || item.itemPrice > 0){
+        if(item.itemPrice != null && item.itemPrice > 0){
             $('#ItemManage .invalidPrice').text('');
             if(valid){
                 valid = true;
@@ -157,4 +157,17 @@ $('#ItemManage .tableRow').on('click', 'tr', function(){
     $('#ItemManage .itemName').val(name);
     $('#ItemManage .itemQty').val(qty);
     $('#ItemManage .itemPrice').val(price);
+});
+
+$('#ItemManage .deleteBtn').click(function(){
+    let id = $('#ItemManage .itemId').val();
+    let items = getAllItems();
+    let item = items.findIndex(item => item.itemId === id);
+    if(item >= 0){
+        deleteItem(item);
+        refresh();
+    }
+    else{
+        $('#ItemManage .invalidCode').text('Item Id does not exist');
+    }
 });
