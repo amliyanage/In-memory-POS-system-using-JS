@@ -87,6 +87,17 @@ $('#OrderManage .itemCmb').change(function(){
 
 let getItems = [];
 
+function clear(tableCount){
+    if(tableCount === 1){
+        $('#OrderManage .itemCode').val('');
+        $('#OrderManage .itemName').val('');
+        $('#OrderManage .itemPrice').val('');
+        $('#OrderManage .orderQty').val('');
+        $('#OrderManage .orderQty').val('');
+        $('#OrderManage .orderQty').val('');
+    }
+}
+
 $('#OrderManage .addBtn').click(function(){
     let getItem = {
         itemCode : $('#OrderManage .itemCode').val(),
@@ -96,13 +107,34 @@ $('#OrderManage .addBtn').click(function(){
         total : $('#OrderManage .itemPrice').val() * $('#OrderManage .orderQty').val()
     }
 
-    getItems.push(getItem);
-    loadTable();
+    if($('#OrderManage .itemQty').val() >=  $('#OrderManage .orderQty').val() ){
+        
+        if($('#OrderManage .custId').val() !== '' && $('#OrderManage .custName').val() !== null){
+
+            if($('#OrderManage .orderQty').val() !== ''){
+                getItems.push(getItem);
+                loadTable();
+                clear(1);
+            }
+
+            else{
+                alert('Invalid Quantity');
+            }
+
+        }
+
+        else{
+            alert('Invalid Customer');
+        }
+    }
+    else{
+        alert('Invalid Quantity');
+    }
 });
 
 
 function loadTable(){
-    $('#OrderManage .tableRow').empty();
+    $('#OrderManage .tableRows').empty();
     for(let i = 0; i < getItems.length; i++){
         $('#OrderManage .tableRows').append(
             '<div> ' +

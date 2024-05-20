@@ -253,7 +253,7 @@ section{
 } */
 
 .tableRow{
-    height: 1vh;
+   height: auto;
 }
 
 .table > div , .tableRows > div{
@@ -281,8 +281,8 @@ section{
 #OrderManage > :last-child{
     display: flex;
     flex-direction: column;
-    height: 33vh;
     overflow-y: scroll;
+    max-height: 34vh;
 }
 
 h5{
@@ -292,4 +292,5 @@ h5{
     position: absolute;
     margin-top: 7.8vh;
 }
+
 
