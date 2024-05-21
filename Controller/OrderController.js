@@ -1,6 +1,7 @@
 import { getAllOrders } from "../model/OrderModel.js";
 import { getAllCustomers } from "../model/CustomerModel.js";
 import { getAllItems } from "../model/ItemModel.js";
+import { saveOrder } from "../model/OrderModel.js";
 
 $(document).ready(function () {
     refresh();
@@ -15,6 +16,7 @@ function refresh(){
     $('#OrderManage .orderDate').val(new Date().toISOString().split('T')[0]);
     loadCustomer();
     loadItems();
+
 }
 
 function extractNumber(id){
@@ -27,6 +29,8 @@ function extractNumber(id){
 
 function generateId(){
     let orders = getAllOrders();
+
+    alert(orders.length);
     
     if(!orders || orders.length === 0){
         return 'OD001';
@@ -44,7 +48,7 @@ function loadCustomer(){
     cmb.empty();
     let option = [];
     let customers = getAllCustomers();
-
+    option.unshift('');
     for (let i = 0; i < customers.length; i++) {
         option.push(customers[i].custId);
     }
@@ -72,6 +76,8 @@ function loadItems(){
         option.push(items[i].itemId);
     }
 
+    option.unshift('');
+
     $.each(option, function (index, value) {
         cmb.append($('<option>').val(value).text(value));
     });
@@ -92,8 +98,24 @@ function clear(tableCount){
         $('#OrderManage .itemCode').val('');
         $('#OrderManage .itemName').val('');
         $('#OrderManage .itemPrice').val('');
+        $('#OrderManage .itemQty').val('');
         $('#OrderManage .orderQty').val('');
-        $('#OrderManage .orderQty').val('');
+        $('#OrderManage .SubTotal').text('');
+        $('#OrderManage .Cash').val('');
+        $('#OrderManage .Total').text('');
+        $('#OrderManage .Discount').val('');
+        $('#OrderManage .itemCmb').val('');
+
+    }
+    else{
+        $('#OrderManage .custId').val('');
+        $('#OrderManage .custName').val('');
+        $('#OrderManage .custAddress').val('');
+        $('#OrderManage .custSalary').val('');
+        $('#OrderManage .itemCode').val('');
+        $('#OrderManage .itemName').val('');
+        $('#OrderManage .itemPrice').val('');
+        $('#OrderManage .itemQty').val('');
         $('#OrderManage .orderQty').val('');
     }
 }
@@ -107,14 +129,18 @@ $('#OrderManage .addBtn').click(function(){
         total : $('#OrderManage .itemPrice').val() * $('#OrderManage .orderQty').val()
     }
 
-    if($('#OrderManage .itemQty').val() >=  $('#OrderManage .orderQty').val() ){
+    let itemQty = $('#OrderManage .itemQty').val();
+    let orderQty = $('#OrderManage .orderQty').val();
+
+    if( itemQty >= orderQty){
         
         if($('#OrderManage .custId').val() !== '' && $('#OrderManage .custName').val() !== null){
 
-            if($('#OrderManage .orderQty').val() !== ''){
+            if($('#OrderManage .orderQty').val() !== '' && $('#OrderManage .orderQty').val() > 0){
                 getItems.push(getItem);
                 loadTable();
                 clear(1);
+                setTotal();
             }
 
             else{
@@ -128,7 +154,7 @@ $('#OrderManage .addBtn').click(function(){
         }
     }
     else{
-        alert('Invalid Quantity');
+        alert('Not Enough Quantity');
     }
 });
 
@@ -147,5 +173,54 @@ function loadTable(){
         );
     }
 }
+
+function setTotal(){
+    let total = 0;
+    for(let i = 0; i < getItems.length; i++){
+        total += getItems[i].total;
+    }
+    $('#OrderManage .Total').text(total);
+}
+
+$('#OrderManage .placeOrder').click(function(){
+    let cash = parseFloat($('#OrderManage .Cash').val());
+    let total = parseFloat($('#OrderManage .Total').text());
+    let discount = parseFloat($('#OrderManage .Discount').val());
+
+    alert(cash + ' ' + total + ' ' + discount);
+
+    if(cash >= total){
+        if(discount >= 0 && discount <= 100){
+            let subTotal = total - (total * discount / 100);
+            $('#OrderManage .SubTotal').text(subTotal.toFixed(2));
+            let balance = cash - subTotal;
+            $('#OrderManage .Balance').val(balance.toFixed(2));
+
+            let Order = {
+                orderId : $('#OrderManage .orderId').val(),
+                orderDate : $('#OrderManage .orderDate').val(),
+                custId : $('#OrderManage .custId').val(),
+                items : getItems,
+                total : total,
+                discount : discount,
+                subTotal : subTotal,
+                cash : cash,
+                balance : balance
+            }
+
+            saveOrder(Order);
+
+            getItems = [];
+            loadTable();
+            clear(2);
+            refresh();
+        } else {
+            alert('Invalid Discount');
+        }
+    } else {
+        alert('Not Enough Cash');
+    }
+});
+
 
 // $('#orderManage .itemCmb')
