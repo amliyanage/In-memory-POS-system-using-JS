@@ -20,7 +20,7 @@ function refresh(){
 }
 
 function extractNumber(id){
-    var match = id.match(/I0(\d+)/);
+    var match = id.match(/OD(\d+)/);
     if(match && match.length > 1){
         return match[1];
     }
@@ -32,14 +32,16 @@ function generateId(){
 
     alert(orders.length);
     
-    if(!orders || orders.length === 0){
-        return 'OD001';
+    if(orders.length === 0){
+        return 'OD01';
     }
     else{
+        alert('awa');
         let orderId = orders[orders.length - 1].orderId;
         let number = extractNumber(orderId);
         number++;
-        return 'OD' + number;
+        alert('OD0' + number);
+        return 'OD0' + number;
     }
 }
 
@@ -122,41 +124,34 @@ function clear(tableCount){
 
 $('#OrderManage .addBtn').click(function(){
     let getItem = {
-        itemCode : $('#OrderManage .itemCode').val(),
-        getItems : $('#OrderManage .itemName').val(),
-        itemPrice : $('#OrderManage .itemPrice').val(),
-        itemQty : $('#OrderManage .orderQty').val(),
-        total : $('#OrderManage .itemPrice').val() * $('#OrderManage .orderQty').val()
-    }
+        itemCode: $('#OrderManage .itemCode').val(),
+        getItems: $('#OrderManage .itemName').val(),
+        itemPrice: parseFloat($('#OrderManage .itemPrice').val()),
+        itemQty: parseInt($('#OrderManage .orderQty').val(), 10),
+        total: parseFloat($('#OrderManage .itemPrice').val()) * parseInt($('#OrderManage .orderQty').val(), 10)
+    };
 
-    let itemQty = $('#OrderManage .itemQty').val();
-    let orderQty = $('#OrderManage .orderQty').val();
+    let itemQty = parseInt($('#OrderManage .itemQty').val(), 10);
+    let orderQty = parseInt($('#OrderManage .orderQty').val(), 10);
 
-    if( itemQty >= orderQty){
-        
+    if(itemQty >= orderQty){
         if($('#OrderManage .custId').val() !== '' && $('#OrderManage .custName').val() !== null){
-
-            if($('#OrderManage .orderQty').val() !== '' && $('#OrderManage .orderQty').val() > 0){
+            if(orderQty > 0){
                 getItems.push(getItem);
                 loadTable();
                 clear(1);
                 setTotal();
-            }
-
-            else{
+            } else {
                 alert('Invalid Quantity');
             }
-
-        }
-
-        else{
+        } else {
             alert('Invalid Customer');
         }
-    }
-    else{
+    } else {
         alert('Not Enough Quantity');
     }
 });
+
 
 
 function loadTable(){
