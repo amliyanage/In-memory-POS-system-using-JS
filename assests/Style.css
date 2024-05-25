@@ -16,6 +16,7 @@ header{
     background-color: #007AFF;
     position: fixed;
     width: 100%;
+    z-index: 1;
 }
 
 header .sectionName{
@@ -86,7 +87,7 @@ form div input ,select{
 }
 
 .buttons button{
-    padding: 20px 30px;
+    padding: 19px 28px;
     border: 1px solid #c4c4c4;
     cursor: pointer;
 }
@@ -293,4 +294,64 @@ h5{
     margin-top: 7.8vh;
 }
 
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2em;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+#homePage > div{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    padding: 0;
+}
 

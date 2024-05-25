@@ -9,16 +9,36 @@
 <body>
     <header>
         <div class="sectionName">
-            Customer Manage
+            Home Page
         </div>
 
         <ul>
-            <li><a href="">Home</a></li>
+            <li><a href="#homePage" class="nav-link">Home</a></li>
             <li><a href="#CustomerManage" class="nav-link">Customer</a></li>
             <li><a href="#ItemManage" class="nav-link">Item</a></li>
             <li><a href="#OrderManage" class="nav-link orderManageBtn">Orders</a></li>
         </ul>
     </header>
+
+    <section id="homePage" >
+        <div>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1507914372368-b2b085b925a1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 3">
+                    </div>
+                </div>
+                <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
+                <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </section>
 
     <section id="CustomerManage">
         <div>
@@ -276,7 +296,7 @@
 <script>
 
     $(document).ready(function(){
-        $('#OrderManage').show();
+        $('#homePage').show();
 
         $('.nav-link').click(function(event){
             event.preventDefault();
@@ -286,8 +306,83 @@
             var targetSection = $(this).attr('href');
 
             $(targetSection).show();
+            switch(targetSection){
+                case '#CustomerManage':
+                    $('.sectionName').text('Customer Manage');
+                    break;
+                case '#ItemManage':
+                    $('.sectionName').text('Item Manage');
+                    break;
+                case '#OrderManage':
+                    $('.sectionName').text('Order Manage');
+                    break;
+                default:
+                    $('.sectionName').text('Home Page');
+            }
         });
     });
+
+
+
+
+  {
+
+
+    let currentSlide = 0;
+    const slideInterval = 3000; // Change slide every 3 seconds
+    let autoSlide;
+
+    function showSlide(index) {
+        const $slides = $('.carousel-item');
+        const totalSlides = $slides.length;
+
+        if (index >= totalSlides) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = totalSlides - 1;
+        } else {
+            currentSlide = index;
+        }
+
+        const offset = -currentSlide * 100;
+        $('.carousel-inner').css('transform', 'translateX(' + offset + '%)');
+
+        $slides.each(function(i) {
+            $(this).toggleClass('active', i === currentSlide);
+        });
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    function startAutoSlide() {
+        autoSlide = setInterval(nextSlide, slideInterval);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlide);
+    }
+
+    showSlide(currentSlide);
+    startAutoSlide();
+
+    $('.carousel').mouseenter(stopAutoSlide).mouseleave(startAutoSlide);
+
+    $('.prev').click(function() {
+        prevSlide();
+    });
+
+    $('.next').click(function() {
+        nextSlide();
+    });
+
+  }
+
 
 </script>
 </html>
