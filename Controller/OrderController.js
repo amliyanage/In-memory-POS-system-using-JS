@@ -151,10 +151,16 @@ $('#OrderManage .addBtn').click(function(){
         if(itemQty >= orderQty){
             if($('#OrderManage .custId').val() !== '' && $('#OrderManage .custName').val() !== null){
                 if(orderQty > 0){
-                    getItems.push(getItem);
-                    loadTable();
-                    clear(1);
-                    setTotal();
+                    let item = getItems.find(I => I.itemCode === getItem.itemCode);
+                    if(item == null){
+                        getItems.push(getItem);
+                        loadTable();
+                        clear(1);
+                        setTotal();
+                    }
+                    else{
+                        alert('Already Added');
+                    }
                 } else {
                     alert('Invalid Quantity');
                 }
