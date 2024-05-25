@@ -1,7 +1,11 @@
 import { getAllOrders } from "../model/OrderModel.js";
 import { getAllCustomers } from "../model/CustomerModel.js";
-import { getAllItems } from "../model/ItemModel.js";
+import { getAllItems, updateItem } from "../model/ItemModel.js";
 import { saveOrder } from "../model/OrderModel.js";
+
+var itemId;
+var itemQty;
+var orderQty;
 
 $(document).ready(function () {
     refresh();
@@ -87,6 +91,9 @@ function loadItems(){
 
 $('#OrderManage .itemCmb').change(function(){
     let item = getAllItems().find(i => i.itemId === $(this).val());
+    itemId = item.itemId;
+    alert(item.itemQty);
+    itemQty = item.itemQty;
     $('#OrderManage .itemCode').val(item.itemId);
     $('#OrderManage .itemName').val(item.itemName);
     $('#OrderManage .itemQty').val(item.itemQty);
@@ -204,6 +211,7 @@ $('#OrderManage .placeOrder').click(function(){
             }
 
             saveOrder(Order);
+            updateItemData();
 
             getItems = [];
             loadTable();
@@ -217,5 +225,15 @@ $('#OrderManage .placeOrder').click(function(){
     }
 });
 
+
+function updateItemData(){
+    let items = getAllItems();
+    for(let i = 0; i < getItems.length; i++){
+        let item = items.find(I => I.itemId === getItems[i].itemCode);
+        item.itemQty -= getItems[i].itemQty;
+        let index = items.findIndex(I => I.itemId === getItems[i].itemCode);
+        updateItem(index, item);
+    }
+}
 
 // $('#orderManage .itemCmb')
