@@ -32,6 +32,7 @@ $('#ItemManage .saveBtn').click(function(){
 
         if(validate(item)){
             saveItem(item);
+            alert('Item Saved');
             refresh();
         }
 
@@ -166,6 +167,7 @@ $('#ItemManage .deleteBtn').click(function(){
     let item = items.findIndex(item => item.itemId === id);
     if(item >= 0){
         deleteItem(item);
+        alert('Item Deleted');
         refresh();
     }
     else{
@@ -174,7 +176,6 @@ $('#ItemManage .deleteBtn').click(function(){
 });
 
 $('#ItemManage .updateBtn').click(function(){
-    alert('Update');
     let item = {
         itemId : 'I00',
         itemName : $('#ItemManage .itemName').val(),
@@ -190,6 +191,7 @@ $('#ItemManage .updateBtn').click(function(){
         let items = getAllItems();
         let index = items.findIndex(i => i.itemId === item.itemId);
         updateItem(index, item);
+        alert('Item Updated');
         refresh();
     }
 });

@@ -20,7 +20,12 @@ function refresh(){
     $('#OrderManage .orderDate').val(new Date().toISOString().split('T')[0]);
     loadCustomer();
     loadItems();
-
+    $('#OrderManage .Total').text("");
+    $('#OrderManage .SubTotal').text("");
+    $('#OrderManage .SubTotal').text("");
+    $('#OrderManage .Balance').val("");
+    $('#OrderManage .Cash').val('');
+    $('#OrderManage .Discount').val('');
 }
 
 function extractNumber(id){
@@ -34,17 +39,17 @@ function extractNumber(id){
 function generateId(){
     let orders = getAllOrders();
 
-    alert(orders.length);
+    // alert(orders.length);
     
     if(orders.length === 0){
         return 'OD01';
     }
     else{
-        alert('awa');
+        // alert('awa');
         let orderId = orders[orders.length - 1].orderId;
         let number = extractNumber(orderId);
         number++;
-        alert('OD0' + number);
+        // alert('OD0' + number);
         return 'OD0' + number;
     }
 }
@@ -92,7 +97,7 @@ function loadItems(){
 $('#OrderManage .itemCmb').change(function(){
     let item = getAllItems().find(i => i.itemId === $(this).val());
     itemId = item.itemId;
-    alert(item.itemQty);
+    // alert(item.itemQty);
     itemQty = item.itemQty;
     $('#OrderManage .addBtn').text('Add');
     $('#OrderManage .itemCode').val(item.itemId);
@@ -203,7 +208,7 @@ $('#OrderManage .placeOrder').click(function(){
     let total = parseFloat($('#OrderManage .Total').text());
     let discount = parseFloat($('#OrderManage .Discount').val());
 
-    alert(cash + ' ' + total + ' ' + discount);
+    // alert(cash + ' ' + total + ' ' + discount);
 
     if(cash >= total){
         if(discount >= 0 && discount <= 100){
@@ -226,10 +231,10 @@ $('#OrderManage .placeOrder').click(function(){
 
             saveOrder(Order);
             updateItemData();
-
             getItems = [];
             loadTable();
             clear(2);
+            alert('Order Placed');
             refresh();
         } else {
             alert('Invalid Discount');
@@ -269,6 +274,7 @@ function dropItem(){
     let item = getItems.find(I => I.itemCode === itemCode);
     let index = getItems.findIndex(I => I.itemCode === itemCode);
     getItems.splice(index, 1);
+    alert('Item Removed');
     loadTable();
     clear(1);
     setTotal();

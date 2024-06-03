@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assests/Style.css">
-    <title>Document</title>
+    <title>Home Page</title>
 <body>
     <header>
         <div class="sectionName">
@@ -107,7 +107,7 @@
                 <form action="" class="inputData" id="ItemForm">
                     <div>
                         <label for="">Item Code</label>
-                        <input type="text" class="itemId">
+                        <input type="text" class="itemId" readonly>
                         <h5 class="invalidCode"></h5>
                     </div>
                     <div>
@@ -176,7 +176,7 @@
                         <div>
                             <div>
                                 <label for="">Order Id</label>
-                                <input type="text" class="orderId">
+                                <input type="text" class="orderId" readonly>
                             </div>
                             <div>
                                 <label for="">Order Date</label>
@@ -295,7 +295,8 @@
 <script type="module" src="Controller/OrderController.js"></script>
 <script>
 
-    $(document).ready(function(){
+$(document).ready(function(){ 
+    
         $('#homePage').show();
 
         $('.nav-link').click(function(event){
@@ -309,15 +310,19 @@
             switch(targetSection){
                 case '#CustomerManage':
                     $('.sectionName').text('Customer Manage');
+                    document.title = "Customer Manage";
                     break;
                 case '#ItemManage':
                     $('.sectionName').text('Item Manage');
+                    document.title = "Item Manage";
                     break;
                 case '#OrderManage':
                     $('.sectionName').text('Order Manage');
+                    document.title = "Order Manage";
                     break;
                 default:
                     $('.sectionName').text('Home Page');
+                    document.title = "Home Page";
             }
         });
     });
