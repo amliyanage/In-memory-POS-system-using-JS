@@ -13,14 +13,15 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #007AFF;
+    background-color: #ffff;
     position: fixed;
     width: 100%;
     z-index: 1;
+    border-bottom: 1px solid #000000;
 }
 
 header .sectionName{
-    color: white;
+    color: #000000;
     font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: 1px;
@@ -34,20 +35,27 @@ header ul{
 
 header ul li{
     background-color: #ffff;
-    font-size: 0.5rem;
+    font-size: 1rem;
     cursor: pointer;
     font-weight: 400;
     padding: 10px 20px;
-    border: 1px solid #c4c4c4;
+    /* border: 1px solid #c4c4c4; */
 }
 
 header ul li a{
-    color: #ff3737;
+    color: #000000;
+    letter-spacing: 0.7px;
+    transition: 0.3s;
+}
+
+header ul li a:hover{
+    color: #ff5858;
+    border-bottom: 1px solid #ff5858;
 }
 
 section > div{
     display: grid;
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 40% 60%;
     font-size: 18px;
     padding: 1vw;
 }
@@ -59,6 +67,7 @@ section > :first-child > div{
 .title{
     font-size: 2rem;
     font-weight: 500;
+    color: #24A746;
 }
 
 form div{
@@ -75,40 +84,67 @@ form div{
 } */
 
 form div input ,select{
-    padding: 10px;
+    padding: 10px 20px;
     border: 1px solid #c4c4c4;
-    border-radius: 5px;
+    border-radius: 30px;
 }
 
 .buttons{
     flex-direction: row;
     font-size: 18px !important;
-    gap: 0;
+    gap: 26px;
 }
 
 .buttons button{
-    padding: 19px 28px;
+    padding: 15px 28px;
     border: 1px solid #c4c4c4;
     cursor: pointer;
+    border-radius: 41px;
+    background-color: #ffff;
+    transition: 0.5s;
 }
 
+.buttons button:hover{
+    color: #ffff;
+} 
+
 .buttons > :first-child{
+    border-color: #56ABF6;
+}
+
+.buttons > :first-child:hover{
     background-color: #56ABF6;
 }
 
 .buttons > :nth-child(2){
+    border-color: #DB3843;
+}
+
+.buttons > :nth-child(2):hover{
     background-color: #DB3843;
 }
 
 .buttons > :nth-child(3){
+    border-color: #FEBF04;
+}
+
+.buttons > :nth-child(3):hover{
     background-color: #FEBF04;
 }
 
 .buttons > :nth-child(4){
+    border-color: #24A746;
+}
+
+.buttons > :nth-child(4):hover{
     background-color: #24A746;
 }
 
 .buttons > :last-child{
+    border-color: #D43A40;
+}
+
+.buttons > :last-child:hover{
     background-color: #D43A40;
 }
 
@@ -117,14 +153,14 @@ form div input ,select{
 }
 
 #CustomerManage th , #CustomerManage td , #ItemManage th , #ItemManage td{
-    border: 1px solid #c4c4c4;
+    border: 2px solid #24A746;
     width: 20vw;
     height: 4vw;
     text-align: center;
 }
 
 #CustomerManage th , #ItemManage th{
-    background-color: #DB3843;
+    background-color: #000000;
     color: white;
 }
 
@@ -149,8 +185,9 @@ section{
 #OrderManage h1{
     font-size: 1.5rem;
     font-weight: 500;
-    background-color: #24A746;
+    background-color: #000000;
     padding: 10px 20px;
+    color: white;
 }
 
 #OrderManage .includeDetails form div > div ,#OrderManage .includeDetails form > :last-child{
@@ -188,7 +225,7 @@ section{
     padding: 10px 20px;
     border: 1px solid #c4c4c4;
     cursor: pointer;
-    background-color: #D43A40;
+    background-color: #24A746;
     color: white;
     margin-top: 30px;
     margin-right: 20px;
@@ -270,7 +307,7 @@ section{
 .table > div > div , .tableRows > div > div{
     width: 18vw;
     height: 4vw;
-    border: 1px solid #c4c4c4;
+    border: 0.5px solid #000000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -286,12 +323,17 @@ section{
     max-height: 34vh;
 }
 
+.table > div > div{
+    background-color: #ff3037;
+    color: white;
+}
+
 h5{
     font-size: 15px;
     color: #ff4343;
     font-weight: 400;
     position: absolute;
-    margin-top: 7.8vh;
+    margin-top: 8.1vh;
 }
 
 

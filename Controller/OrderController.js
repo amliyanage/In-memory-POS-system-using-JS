@@ -267,6 +267,7 @@ $('.mainTable .tableRows').on('click', 'div', function(){
     $('#OrderManage .orderQty').val(qty);
 
     $('#OrderManage .ItemSelect .addBtn').text('delete');
+    $('#OrderManage .ItemSelect .addBtn').css('background-color', 'red');
 });
 
 function dropItem(){
