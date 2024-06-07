@@ -116,6 +116,7 @@ function refresh(){
     $('#ItemManage .itemQty').val('');
     $('#ItemManage .itemPrice').val('');
     loadTable();
+    $('.counts .items h2').text(getAllItems().length);
 }
 
 function generateId(){

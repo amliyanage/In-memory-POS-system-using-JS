@@ -145,7 +145,7 @@ function refresh(){
     $('#CustomerManage .invalidCustId').text('');
     $('#CustomerManage .invalidCustName').text('');
     $('#CustomerManage .invalidCustAddress').text('');
-
+    $('.counts .customers h2').text(getAllCustomers().length);
     reloadTable();
 }
 
